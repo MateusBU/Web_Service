@@ -2,15 +2,10 @@
 
 ## Summary
 1. [Introduction to SOAP](#introduction-to-soap)  
-2. [Project Overview](#project-overview)  
 3. [Requirements](#requirements)  
 4. [Installation](#installation)  
-5. [How It Works](#how-it-works)  
-6. [index.js File Explanation](#indexjs-file-explanation)  
-7. [Running the Project](#running-the-project)  
-8. [Example Output](#example-output)  
-9. [Error Handling](#error-handling)  
-10. [References](#references)  
+5. [How It Works](#how-it-works)
+2. [Project CEP Overview](#project-cep-overview)  
 
 ---
 
@@ -34,7 +29,27 @@ A SOAP message typically comprises:
 
 ---
 
-## 2. Project Overview
+## 2. Requirements
+
+- Node.js (version 12+)
+- npm (Node Package Manager)
+- The `soap` package (`npm install soap`)
+- The `express` package (`npm install express`)
+- Internet connectivity
+
+---
+
+## 3. Installation
+
+```bash
+git clone <repository-url>
+cd <project-folder>
+npm install soap
+npm install express
+```
+
+---
+## 4. Project CEP Overview
 
 This project demonstrates how to call a SOAP web service — specifically the Brazilian postal service (*Correios*) — to look up address information by CEP (postal code). It uses:
 - **Node.js**
@@ -43,20 +58,41 @@ This project demonstrates how to call a SOAP web service — specifically the Br
 - A `consultaCEP` request to query the CEP
 - Console output for results or errors
 
----
-
-## 3. Requirements
-
-- Node.js (version 12+)
-- npm (Node Package Manager)
-- The `soap` package (`npm install soap`)
-- Internet connectivity
 
 ---
 
-## 4. Installation
+---
+## 4. Project Serve Overview
 
-```bash
-git clone <repository-url>
-cd <project-folder>
-npm install soap
+This project creates a simple SOAP-based web service for a basic calculator that can perform **addition** and **multiplication**. The service is built using **Express.js** and the `soap` npm package to expose SOAP methods through a WSDL (Web Service Description Language).
+
+The two primary functions exposed by the SOAP service are:
+- **somar**: Adds two numbers.
+- **multiplicar**: Multiplies two numbers.
+
+The service listens on port `8001` and serves the WSDL file for clients to consume.
+
+
+### How it works
+This service is built using the express framework. The SOAP functionality is provided by the soap npm package. The WSDL (wscalc1.wsdl) is loaded into the service, and the service exposes the following methods:
+
+somar: Adds two numbers (a and b) and returns the sum.
+
+multiplicar: Multiplies two numbers (a and b) and returns the result.
+
+The service listens for SOAP requests at /wscalc1 and uses the wscalc1.wsdl to describe the available operations.
+
+
+### WSDL Explanation
+
+The wscalc1.wsdl file is a Web Service Description Language (WSDL) document that describes the operations exposed by the service. It defines the structure of SOAP messages, including:
+
+Available operations (somar, multiplicar)
+
+Input parameters (a, b)
+
+Output elements (sum or product result)
+
+The WSDL allows clients to know what operations are available and how to format the SOAP request/response.
+
+---
