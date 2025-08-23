@@ -1,11 +1,11 @@
-# SOAP CEP Lookup Project
+# SOAP Lookup Project
 
 ## Summary
 1. [Introduction to SOAP](#introduction-to-soap)  
-3. [Requirements](#requirements)  
-4. [Installation](#installation)  
-5. [How It Works](#how-it-works)
-2. [Project CEP Overview](#project-cep-overview)  
+2. [Requirements](#requirements)  
+3. [Installation](#installation)  
+4. [How It Works](#how-it-works)
+5. [Project CEP Overview](#project-cep-overview)  
 
 ---
 
@@ -60,9 +60,7 @@ This project demonstrates how to call a SOAP web service — specifically the Br
 
 
 ---
-
----
-## 4. Project Serve Overview
+## 5. Project Serve Overview
 
 This project creates a simple SOAP-based web service for a basic calculator that can perform **addition** and **multiplication**. The service is built using **Express.js** and the `soap` npm package to expose SOAP methods through a WSDL (Web Service Description Language).
 
@@ -96,3 +94,119 @@ Output elements (sum or product result)
 The WSDL allows clients to know what operations are available and how to format the SOAP request/response.
 
 ---
+
+
+# REST Lookup Project
+
+## Summary
+
+1. [Introduction to REST](#introduction-to-rest)  
+2. [Requirements](#requirements)  
+3. [Installation](#installation)  
+4. [How It Works](#hot-it-works)  
+5. [Project REST Overview](#project-rest-overview)  
+
+
+
+## 1. Introduction to REST
+
+REST (Representational State Transfer) is an architectural style for designing networked applications. It leverages standard HTTP methods (GET, POST, PUT, DELETE) and is often used to build web APIs that are lightweight, scalable, and stateless.
+
+A RESTful API typically follows these principles:
+
+**Stateless:** Each request contains all the information needed; the server does not retain session information.
+
+**Client-server architecture:** The client and server are independent and communicate over a uniform interface.
+
+**Cacheable:** Responses can be cached to improve performance.
+
+**Uniform interface:** Consistent resource identification using URIs and standard HTTP verbs.
+
+**Layered system:** The architecture can be composed of hierarchical layers (e.g., load balancers, proxies).
+
+**REST vs. SOAP:**
+
+- REST is simpler and more lightweight compared to SOAP.
+
+- REST commonly uses JSON for data exchange, while SOAP relies on XML.
+
+- REST does not require a strict contract (like WSDL in SOAP).
+
+- SOAP is preferred in scenarios needing strict security, formal contracts, or complex operations.
+
+## 2. Requirements
+
+- Node.js (version 12+)
+
+- npm (Node Package Manager)
+
+- The express package (npm install express)
+
+- The cors package (npm install cors)
+
+- Internet connectivity
+
+## 3. Installation
+```
+git clone <repository-url>
+cd <project-folder>
+npm install express
+npm install cors
+```
+
+## 4. How It Works
+
+This project sets up a basic REST API using Node.js and Express. It defines routes for basic CRUD operations on a resource called sequence.
+
+### Endpoints
+
+| Method | Route            | Description            |
+|--------|------------------|------------------------|
+| GET    | `/sequence`      | Get all sequences      |
+| GET    | `/sequence/:id`  | Get sequence by ID     |
+| POST   | `/sequence`      | Create a new sequence  |
+| PUT    | `/sequence`      | Update a sequence      |
+| DELETE | `/sequence/:id`  |
+
+
+POST /sequence <br>
+Response: 201 Created — "route POST!"
+
+PUT /sequence <br>
+Body: { "id": 123 } <br>
+Response: 201 Created — "route PUT with ID! --> 123"
+
+DELETE /sequence/123 <br>
+Response: 200 OK — "route DELETE with ID! --> 123"
+
+GET /sequence <br>
+Response: 200 OK — "route GET! :)"
+
+GET /sequence/123 <br>
+Response: 200 OK — "route GET with ID! 123"
+
+5. Project REST Overview
+
+```
+project-root/
+│
+├── src/
+│   └── controllers/
+│       └── sequenceController.js   # Handles route logic
+│   └── routes/
+│       ├── index.js                # Loads routes
+│       └── sequenceRoute.js        # Defines endpoints
+│
+├── server.js                       # Main entry point
+```
+
+### Main Components
+
+Express Server (server.js)
+Initializes the server, configures middleware, and loads routes.
+
+Routing (sequenceRoute.js)
+Defines endpoints for the sequence resource and maps HTTP methods to controller functions.
+
+Controller (sequenceController.js)
+Contains logic for handling requests and sending appropriate responses.
